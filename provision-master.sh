@@ -1,5 +1,14 @@
 #!/bin/bash
 
+cat <<EOT | sudo tee /etc/docker/daemon.json
+{
+  "bip": "172.22.16.5/24",
+  "fixed-cidr": "172.19.55.0/24",
+  "iptables": false
+}
+EOT
+systemctl restart docker
+
 if [ "x$SWARM" == "x" ]; then
   SWARM=vagrant-local
 fi

@@ -12,6 +12,7 @@ Vagrant.configure('2') do |config|
     master.vm.provider "virtualbox" do |vb|
       vb.memory = "1024"
       vb.cpus = 2
+      vb.gui = false
     end
 
     master.vm.provider "hyperv" do |hv|
@@ -25,22 +26,25 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.define "windows" do |windows|
-    windows.vm.box = "symbols/windows_2016_docker_core"
+    windows.vm.box = "symbols/windows_2016_docker"
     windows.vm.communicator = "winrm"
 
     # private network provides known IP addresses for the swarm master and
     # nodes
-    windows.vm.network "private_network", ip: '192.168.34.11'
+    windows.vm.network "private_network", ip: '192.168.34.12'
 
     windows.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
       vb.cpus = 2
+      vb.gui = false
     end
 
     windows.vm.provider "hyperv" do |hv|
       hv.memory = "2048"
       hv.cpus = 2
     end
+
+    windows.vm.provision "file", source: "daemon.json", destination: "/ProgramData/Docker/config/daemon.json"
 
     windows.vm.provision "shell",
       path: "docker-join.ps1",
