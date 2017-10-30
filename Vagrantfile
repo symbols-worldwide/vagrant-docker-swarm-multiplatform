@@ -26,7 +26,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.define "windows" do |windows|
-    windows.vm.box = "symbols/windows_2016_docker"
+    windows.vm.box = "symbols/windows_2016_docker_core"
     windows.vm.communicator = "winrm"
 
     # private network provides known IP addresses for the swarm master and
