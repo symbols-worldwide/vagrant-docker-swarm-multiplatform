@@ -45,7 +45,7 @@ def windows_vm_config(windows)
   windows.vm.provision "shell",
     path: "ssh-server.ps1"
 
-  windows.vm.provision "file", source: "daemon.json", destination: "/ProgramData/Docker/config/daemon.json"
+  windows.vm.provision "file", source: "daemon-windows.json", destination: "/ProgramData/Docker/config/daemon.json"
 
   windows.vm.provision "shell",
     path: "docker-join.ps1"
