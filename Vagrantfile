@@ -37,7 +37,7 @@ def windows_vm_config(windows)
   windows.vm.provision :reload
 
   windows.vm.provision "shell",
-    inline: "sleep 15"
+    inline: "sleep 30"
 
   windows.vm.provision "shell",
     path: "chocolatey.ps1"
