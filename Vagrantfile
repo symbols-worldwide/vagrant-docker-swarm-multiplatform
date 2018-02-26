@@ -3,7 +3,7 @@
 
 require 'rbconfig'
 
-REQUIRED_PLUGINS = %w(vagrant-reload vagrant-host-shell)
+REQUIRED_PLUGINS = %w(vagrant-reload)
 
 missing_plugins = REQUIRED_PLUGINS.reject { |p| Vagrant.has_plugin? p }
 abort("The following plugins are required, and not installed:\n\n  " + missing_plugins.join("\n  ")) unless missing_plugins.empty?
