@@ -68,6 +68,8 @@ def linux_vm_config(linux, is_master = nil)
   linux.vm.provider "hyperv" do |hv|
     hv.memory = "1024"
     hv.cpus = 2
+
+    linux.vm.synced_folder('.', '/vagrant', type: 'smb', mount_options: ['vers=1.0'])
   end
 
   linux.vm.provision 'shell', path: 'config-docker.sh'
