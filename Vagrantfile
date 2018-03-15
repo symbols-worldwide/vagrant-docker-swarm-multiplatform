@@ -69,7 +69,7 @@ def linux_vm_config(linux, is_master = nil)
     hv.memory = "1024"
     hv.cpus = 2
 
-    override.vm.synced_folder('.', '/vagrant', type: 'smb', mount_options: ['vers=1.0'])
+    override.vm.synced_folder('.', '/vagrant', type: 'smb', mount_options: ['vers=2.0'])
   end
 
   linux.vm.provision 'shell', path: 'config-docker.sh'
